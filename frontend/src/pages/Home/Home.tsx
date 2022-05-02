@@ -1,5 +1,6 @@
 import styles from "./Home.module.css"
 import { Pokemon } from "components/Pokemon"
+import { Loader } from "components/Loader"
 import React from "react"
 
 interface PokemonInfo {
@@ -23,6 +24,7 @@ const fetchPokemons = async (): Promise<PokemonInfo[]> => {
 export const Home = () => {
   //const [filterValue, setFilterValue] = React.useState("")
   const [pokemons, updatePokemonsList] = React.useState<PokemonInfo[]>([])
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   /*
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,23 +33,30 @@ export const Home = () => {
   */
 
   React.useEffect(() => {
-    fetchPokemons().then((pokemons: PokemonInfo[]) => updatePokemonsList(pokemons))
+    setIsLoading(true)
+    fetchPokemons().then((pokemons: PokemonInfo[]) => {
+      updatePokemonsList(pokemons)
+      setTimeout(() => setIsLoading(false), 1000)
+    })
   }, [])
 
   return (
     <div className={styles.intro}>
       <p className={styles.title}>Pokedex !</p>
       {/*<input className={styles.input} onChange={onInputChange} value={filterValue}></input>*/}
-      <div className={styles["pokemon-list"]}>
-        {
-          /*filterPokemonsByName(pokemons, filterValue).map(({ name, id, height, weight }) => (
-          <Pokemon name={name} id={id} height={height} weight={weight} key={id} />
-        ))*/
-          pokemons.map(({ name, id, height, weight }) => (
+      {!isLoading && (
+        <div className={styles["pokemon-list"]}>
+          {
+            /*filterPokemonsByName(pokemons, filterValue).map(({ name, id, height, weight }) => (
             <Pokemon name={name} id={id} height={height} weight={weight} key={id} />
-          ))
-        }
-      </div>
+          ))*/
+            pokemons.map(({ name, id, height, weight }) => (
+              <Pokemon name={name} id={id} height={height} weight={weight} key={id} />
+            ))
+          }
+        </div>
+      )}
+      {isLoading && <Loader />}
     </div>
   )
 }
