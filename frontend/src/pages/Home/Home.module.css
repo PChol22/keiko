@@ -13,7 +13,7 @@
   border-image: initial;
 }
 
-.pokemonList {
+.pokemon-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

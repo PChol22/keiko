@@ -11,7 +11,7 @@ interface PokemonInfo {
 
 /*
 const filterPokemonsByName = (pokemons: PokemonInfo[], filterValue: string): PokemonInfo[] => {
-  return pokemons.filter(p => p.name.includes(filterValue))
+  return pokemons.filter(pokemon => pokemon.name.includes(filterValue))
 }
 */
 
@@ -38,7 +38,7 @@ export const Home = () => {
     <div className={styles.intro}>
       <p className={styles.title}>Pokedex !</p>
       {/*<input className={styles.input} onChange={onInputChange} value={filterValue}></input>*/}
-      <div className={styles.pokemonList}>
+      <div className={styles["pokemon-list"]}>
         {
           /*filterPokemonsByName(pokemons, filterValue).map(({ name, id, height, weight }) => (
           <Pokemon name={name} id={id} height={height} weight={weight} key={id} />
