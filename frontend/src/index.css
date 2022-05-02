@@ -1,0 +1,4 @@
+@font-face {
+  font-family: "PokemonGB";
+  src: local("PokemonGB"), url("./fonts/PokemonGb-RAeo.ttf") format("truetype");
+}

@@ -1,0 +1,18 @@
+.container {
+  height: 100%;
+}
+
+.headerContainer {
+  background-color: #ef5350;
+  height: 50px;
+  align-items: center;
+  display: flex;
+  padding: 5px;
+}
+
+.header {
+  flex: 1;
+  max-width: 72rem;
+  margin: auto;
+  display: flex;
+}
