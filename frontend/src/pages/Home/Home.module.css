@@ -13,10 +13,6 @@
   border-image: initial;
 }
 
-.title {
-  align-self: center;
-}
-
 .pokemonList {
   display: flex;
   flex-direction: row;

@@ -32,7 +32,7 @@ export const Home = () => {
 
   return (
     <div className={styles.intro}>
-      <p className={styles.title}>Pokedex !</p>
+      <p>Pokedex !</p>
       <input className={styles.input} onChange={onInputChange} value={filterValue}></input>
       <div className={styles.pokemonList}>
         {filterPokemonsByName(pokemons, filterValue).map(({ name, id, height, weight }) => (
