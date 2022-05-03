@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { Root } from "./components/Root"
 
 import { Home } from "./pages/Home"
@@ -9,7 +9,8 @@ export const App = () => {
     <Root>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/pokedex/0"></Navigate>} />
+          <Route path="/pokedex/:pageNumber" element={<Home />} />
           <Route path="/pokemon/:pokemonId" element={<PokemonDetails />} />
         </Routes>
       </BrowserRouter>
