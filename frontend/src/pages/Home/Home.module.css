@@ -6,16 +6,14 @@
   padding: 10px;
 }
 
-.input {
-  border-width: 2px;
-  border-style: inset;
-  border-color: rgb(118, 118, 118);
-  border-image: initial;
-}
-
 .pokemon-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.pokemon-details-link {
+  text-decoration: none;
+  color: black;
 }
