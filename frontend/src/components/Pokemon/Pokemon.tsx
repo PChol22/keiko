@@ -1,3 +1,4 @@
+import { Animate } from "components/Animate"
 import styles from "./Pokemon.module.css"
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
   weight: number
 }
 
-export const Pokemon = ({ name, id, weight, height }: Props) => {
+const PokemonComponent = ({ name, id, weight, height }: Props) => {
   return (
     <div className={styles.pokemon}>
       <p>{name}</p>
@@ -18,3 +19,5 @@ export const Pokemon = ({ name, id, weight, height }: Props) => {
     </div>
   )
 }
+
+export const Pokemon = Animate<Props>("tada")(PokemonComponent)
