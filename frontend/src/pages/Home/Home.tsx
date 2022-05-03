@@ -25,6 +25,8 @@ const fetchPokemons = async (pageNumber: number): Promise<PokemonInfo[]> => {
   return response.json()
 }
 
+const MAX_POKEMON_PER_PAGE = 15
+
 export const Home = () => {
   // const [filterValue, setFilterValue] = React.useState("")
   const [pokemons, setPokemonsList] = React.useState<PokemonInfo[]>([])
@@ -66,7 +68,7 @@ export const Home = () => {
             {+pokedexPage > 0 && <p>{"<"}</p>}
           </Link>
           <Link className={styles["change-page-link"]} to={"/pokedex/" + (+pokedexPage + 1)}>
-            {pokemons.length === 15 && <p>{">"}</p>}
+            {pokemons.length === MAX_POKEMON_PER_PAGE && <p>{">"}</p>}
           </Link>
         </div>
       )}
