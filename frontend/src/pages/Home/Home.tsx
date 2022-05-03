@@ -25,9 +25,9 @@ const fetchPokemons = async (): Promise<PokemonInfo[]> => {
 
 export const Home = () => {
   // const [filterValue, setFilterValue] = React.useState("")
-  const [pokemons, updatePokemonsList] = React.useState<PokemonInfo[]>([])
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [errorMessage, setErrorMessage] = React.useState<string>("")
+  const [pokemons, setPokemonsList] = React.useState<PokemonInfo[]>([])
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null)
 
   /*
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,20 +36,24 @@ export const Home = () => {
   */
 
   React.useEffect(() => {
-    setIsLoading(true)
-    fetchPokemons()
-      .then((pokemons: PokemonInfo[]) => {
-        updatePokemonsList(pokemons)
-        setTimeout(() => setIsLoading(false), 500)
-      })
-      .catch((error: string) => setErrorMessage(error))
+    const fetchData = async () => {
+      setIsLoading(true)
+      try {
+        const pokemonList = await fetchPokemons()
+        setPokemonsList(pokemonList)
+        setIsLoading(false)
+      } catch {
+        setErrorMessage("Error while fetching pokemons")
+      }
+    }
+    fetchData()
   }, [])
 
   return (
     <div className={styles.intro}>
       <p className={styles.title}>Pokedex !</p>
       {/*<input className={styles.input} onChange={onInputChange} value={filterValue}></input>*/}
-      {!isLoading && !errorMessage && (
+      {!isLoading && errorMessage === null && (
         <div className={styles["pokemon-list"]}>
           {
             /*filterPokemonsByName(pokemons, filterValue).map(({ name, id, height, weight }) => (
@@ -63,8 +67,8 @@ export const Home = () => {
           }
         </div>
       )}
-      {isLoading && !errorMessage && <Loader />}
-      {errorMessage && <p>Error : {errorMessage}</p>}
+      {isLoading && errorMessage === null && <Loader />}
+      {errorMessage !== null && <p>Error : {errorMessage}</p>}
     </div>
   )
 }
