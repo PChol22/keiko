@@ -17,3 +17,16 @@
   text-decoration: none;
   color: black;
 }
+
+.navigation-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.change-page-link {
+  margin: 0 2rem;
+  color: black;
+  text-decoration: none;
+}
