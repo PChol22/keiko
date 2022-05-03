@@ -2,6 +2,7 @@ import styles from "./Home.module.css"
 import { Pokemon } from "components/Pokemon"
 import { Loader } from "components/Loader"
 import React from "react"
+import { Link } from "react-router-dom"
 
 interface PokemonInfo {
   name: string
@@ -39,9 +40,7 @@ export const Home = () => {
     fetchPokemons()
       .then((pokemons: PokemonInfo[]) => {
         updatePokemonsList(pokemons)
-        setTimeout(() => {
-          setIsLoading(false)
-        }, 1000)
+        setTimeout(() => setIsLoading(false), 500)
       })
       .catch((error: string) => setErrorMessage(error))
   }, [])
@@ -57,7 +56,9 @@ export const Home = () => {
           <Pokemon name={name} id={id} height={height} weight={weight} key={id} />
         ))*/
             pokemons.map(({ name, id, height, weight }) => (
-              <Pokemon name={name} id={id} height={height} weight={weight} key={id} />
+              <Link to={`/pokemon/${id}`} key={id} className={styles["pokemon-details-link"]}>
+                <Pokemon name={name} id={id} height={height} weight={weight} />
+              </Link>
             ))
           }
         </div>

@@ -1,0 +1,32 @@
+.intro {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  margin-top: 1em;
+}
+
+.pokemon-sprites {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+
+.pokemon-sprites > img {
+  margin: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.back-link {
+  color: black;
+  align-self: flex-start;
+}
