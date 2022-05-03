@@ -8,4 +8,4 @@ const LogoComponent = () => (
   />
 )
 
-export const Logo = Animate<Record<string, never>>(LogoComponent)
+export const Logo = Animate("wobble")(LogoComponent)

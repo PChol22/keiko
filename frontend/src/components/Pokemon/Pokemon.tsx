@@ -20,4 +20,4 @@ const PokemonComponent = ({ name, id, weight, height }: Props) => {
   )
 }
 
-export const Pokemon = Animate<Props>(PokemonComponent)
+export const Pokemon = Animate<Props>("tada")(PokemonComponent)
